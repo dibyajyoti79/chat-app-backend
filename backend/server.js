@@ -4,6 +4,7 @@ const colors = require('colors');
 const userRoute = require('./routes/userRoute');
 const chatRoute = require('./routes/chatRoute');
 const messageRoute = require('./routes/messageRoute');
+const cors = require('cors');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 dotenv.config();
 const connectDB = require('./config/db');
@@ -11,6 +12,9 @@ const connectDB = require('./config/db');
 connectDB();
 
 const app = express();
+
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.json());
 
